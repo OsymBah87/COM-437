@@ -1,4 +1,4 @@
-# AI Governance Readiness Checklist
+# QuickCheck AI
 
 ## Project Focus
 
@@ -6,7 +6,7 @@ This project is a local-first educational prototype that applies my developing k
 
 ## Project Description
 
-The AI Governance Readiness Checklist is a proposed Android application intended to help a user conduct an initial review of a proposed or existing artificial intelligence system. The application will organize questions into six governance categories:
+QuickCheck AI is a proposed Android application intended to help a user conduct an initial review of a proposed or existing artificial intelligence system. The application will organize questions into six governance categories:
 
 - Security
 - Privacy
@@ -74,9 +74,24 @@ A recognized AI-governance framework and the final question weights will be sele
 
 ## Design and Wireframes
 
-The planned design will use a restrained green and neutral-gray palette. Risk results will include text labels in addition to color. The interface will use readable labels, large touch targets, visible progress, predictable navigation, and concise explanations for governance terms.
+The wireframes use a red background, green controls, white text, and a red-to-green heading treatment based on the QuickCheck AI logo. The interface uses readable labels, large touch targets, visible progress, predictable navigation, and concise explanations for governance terms.
 
-The final Android layouts may change after testing, learning, and feedback. Wireframes are included in the Word project outline and may be added to the repository as the design develops.
+The final Android layouts may change after testing, learning, and feedback. The current wireframes and their editable Justinmind source are included in this repository.
+
+### Wireframe Files
+
+- [Complete wireframe PDF](docs/wireframes/QuickCheck-AI-Wireframes.pdf)
+- [Editable Justinmind project](docs/wireframes/QuickCheck-AI-Wireframes.vp)
+
+### Screen Previews
+
+| Welcome | Assessment Setup | Governance Question |
+| --- | --- | --- |
+| ![Welcome screen](docs/wireframes/01-welcome.png) | ![Assessment Setup screen](docs/wireframes/02-assessment-setup.png) | ![Governance Question screen](docs/wireframes/03-governance-question.png) |
+
+| Results | Recommendations | Saved Assessments |
+| --- | --- | --- |
+| ![Results screen](docs/wireframes/04-results.png) | ![Recommendations screen](docs/wireframes/05-recommendations.png) | ![Saved Assessments screen](docs/wireframes/06-saved-assessments.png) |
 
 ## Project Goals and Success Criteria
 

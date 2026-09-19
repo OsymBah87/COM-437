@@ -1,8 +1,5 @@
 package com.osymbah.aigovernancereadiness;
 
-/**
- * A single draft question used by the educational QuickCheck AI prototype.
- */
 public class GovernanceQuestion {
     private final String category;
     private final String text;

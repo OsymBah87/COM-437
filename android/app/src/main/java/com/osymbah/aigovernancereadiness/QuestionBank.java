@@ -4,15 +4,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Provisional question bank for the student prototype.
- *
- * The questions and categories are drafts. They are not yet validated against a
- * selected governance framework and must not be treated as a compliance test.
- */
 public final class QuestionBank {
     private QuestionBank() {
-        // Prevent construction of this utility class.
     }
 
     public static List<GovernanceQuestion> getQuestions() {

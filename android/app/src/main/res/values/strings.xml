@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">QuickCheck AI</string>
+    <string name="app_logo_description">QuickCheck AI application logo</string>
+    <string name="welcome_heading">1. Welcome</string>
+    <string name="welcome_title">QuickCheck AI\nAI Governance Readiness\nChecklist</string>
+    <string name="welcome_summary">Initial review of security, privacy, fairness, transparency, accountability, and human oversight.</string>
+    <string name="welcome_disclaimer">Educational prototype. Not a formal legal, regulatory, compliance, or organizational risk assessment.</string>
+    <string name="start_assessment">Start Assessment</string>
+    <string name="saved_assessments">Saved Assessments</string>
+    <string name="question_category_placeholder">Governance category</string>
+    <string name="question_progress_placeholder">Question progress</string>
+    <string name="question_progress_format">Question %1$d of %2$d</string>
+    <string name="question_text_placeholder">Governance question</string>
+    <string name="next_question">Next</string>
+    <string name="view_results">View Results</string>
+    <string name="select_response_message">Please select a response before continuing.</string>
+</resources>

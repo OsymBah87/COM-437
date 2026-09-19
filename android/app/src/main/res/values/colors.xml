@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="quickcheck_red">#991B1B</color>
+    <color name="quickcheck_green">#1A7A03</color>
+    <color name="quickcheck_bright_green">#39FFB4</color>
+    <color name="quickcheck_dark_blue">#001F73</color>
+</resources>

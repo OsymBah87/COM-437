@@ -6,7 +6,7 @@ This project is a local-first educational prototype that applies my developing k
 
 ## Project Description
 
-QuickCheck AI is a proposed Android application intended to help a user conduct an initial review of a proposed or existing artificial intelligence system. The application will organize questions into six governance categories:
+QuickCheck AI is an Android application prototype intended to help a user conduct an initial review of a proposed or existing artificial intelligence system. The application organizes draft questions into six governance categories:
 
 - Security
 - Privacy
@@ -15,7 +15,7 @@ QuickCheck AI is a proposed Android application intended to help a user conduct 
 - Accountability
 - Human oversight
 
-After an assessment is completed, the application is intended to calculate category scores, assign an initial readiness level, identify possible areas of concern, and display recommendations for further review.
+The current prototype includes the branded Welcome screen, navigation across five Android activities, assessment setup fields, and an initial 18-question bank. Category scoring, readiness levels, recommendations, and saved-assessment storage remain planned features.
 
 The intended users may include students, developers, cybersecurity professionals, project owners, and governance personnel who need a structured starting point for discussing AI risk. The course version will be a single-user, local-first educational prototype. It will not provide a legal, regulatory, certification, or compliance determination.
 
@@ -37,7 +37,7 @@ The proposed application will present these considerations through a guided mobi
 
 ### Front End
 
-The planned interface will use Android activities, XML layouts, standard form controls, cards, buttons, progress indicators, and accessible color contrast. Navigation is expected to move from assessment setup to questions, results, and saved assessments.
+The interface currently uses Android activities, XML layouts, standard form controls, buttons, radio buttons, and a progress indicator. Navigation connects Welcome, Assessment Setup, Questions, placeholder Results, and placeholder Saved Assessments screens. The remaining screens still require full wireframe styling and accessibility review.
 
 ### Local Back End
 
@@ -55,20 +55,30 @@ A later version may use Firebase for authentication, synchronized storage, multi
 
 The application is intended to minimize permissions, avoid unnecessary personal data, validate input, and keep prototype data within application-controlled storage.
 
+## Current Implementation
+
+- Branded Welcome screen with the approved QuickCheck AI color palette, logo, purpose, and educational disclaimer
+- Five Java activities connected through explicit Android intents
+- Assessment Setup fields for basic system information
+- An initial bank of 18 provisional questions, three per governance category
+- Yes, No, Partly, and Not Sure response options
+- Required response selection before advancing
+- Back and Next navigation with temporary answer retention during the current Question activity
+- A local unit test that checks the question-bank structure
+
 ## Planned Functionality
 
-1. Display a welcome screen explaining the application and its limitations.
-2. Create a new assessment with basic system information.
-3. Present structured questions across the six governance categories.
-4. Validate required questions before scoring.
-5. Calculate category scores and an overall readiness classification.
-6. Display rule-based recommendations for categories requiring attention.
-7. Save, view, search, and delete completed assessments locally.
-8. Open a saved assessment to review its responses and results.
+- Validate and map the question bank to a selected governance framework
+- Preserve assessment state across screen rotation and application recreation
+- Calculate transparent category scores and an overall readiness classification
+- Display rule-based recommendations for categories requiring attention
+- Save, view, search, reopen, and delete completed assessments locally
+- Complete the Results and Saved Assessments screens
+- Test the complete flow on an emulator and physical Android device
 
 ## Assessment and Scoring Approach
 
-Response options may use a consistent scale such as **Yes**, **Partial**, **No**, and **Not Applicable**. The initial prototype will use transparent rule-based scoring rather than artificial intelligence to evaluate responses.
+The current response scale is **Yes**, **No**, **Partly**, and **Not Sure**. Planned scoring will be transparent and rule-based rather than using artificial intelligence to evaluate responses.
 
 A recognized AI-governance framework and the final question weights will be selected during the research and design phase. The question sources, scoring rules, and assumptions will be documented before implementation. The application will distinguish between an educational readiness indicator and a formal risk or compliance judgment.
 
@@ -107,12 +117,16 @@ The final Android layouts may change after testing, learning, and feedback. The 
 - Single-user operation
 - Local storage only
 - No formal legal, regulatory, certification, or compliance determination
-- The framework, assessment questions, and scoring method still require further research
+- The governance framework and scoring method have not been selected
+- The 18 questions are provisional and have not been validated as a formal assessment instrument
+- Results, recommendations, and saved-assessment storage are not yet implemented
+- Temporary answers are not yet preserved across rotation or application recreation
 
 ## Documentation
 
 - **Project Wiki:** https://github.com/OsymBah87/COM-437/wiki
 - **Repository:** https://github.com/OsymBah87/COM-437
+- **Android source:** `android/`
 
 ## Disclaimer
 

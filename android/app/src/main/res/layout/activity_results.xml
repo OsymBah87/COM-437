@@ -1,56 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Assessment Results"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:background="#FFF3CD"
-            android:padding="16dp"
-            android:text="Placeholder only: Scoring has not been implemented."
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Planned categories:\n\n• Security\n• Privacy\n• Fairness\n• Transparency\n• Accountability\n• Human Oversight"
-            android:textSize="17sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Recommendations will be rule-based and will be added after the governance framework and scoring method are selected."
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/resultsSavedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="View Saved Assessments" />
-
-        <Button
-            android:id="@+id/resultsHomeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Return Home" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+        <TextView style="@style/QuickCheckScreenHeading" android:text="@string/results_heading" />
+        <ImageView style="@style/QuickCheckSmallLogo" android:contentDescription="@null" android:importantForAccessibility="no" />
+        <TextView android:id="@+id/resultsSummaryText" style="@style/QuickCheckBodyText" android:layout_marginTop="18dp" android:background="@color/white" android:padding="16dp" android:text="@string/results_preview" android:textColor="@color/quickcheck_dark_blue" android:textStyle="bold" />
+        <TextView android:id="@+id/resultsCategoryText" style="@style/QuickCheckBodyText" android:layout_marginTop="24dp" android:text="@string/results_categories_preview" />
+        <TextView android:id="@+id/resultsRecommendationsText" style="@style/QuickCheckBodyText" android:layout_marginTop="24dp" android:text="@string/results_recommendations_preview" />
+        <Button android:id="@+id/resultsSaveButton" style="@style/QuickCheckButton" android:layout_marginTop="28dp" android:text="@string/save_assessment" />
+        <Button android:id="@+id/resultsSavedButton" style="@style/QuickCheckButton" android:layout_marginTop="12dp" android:text="@string/view_saved_assessments" />
+        <Button android:id="@+id/resultsHomeButton" style="@style/QuickCheckButton" android:layout_marginTop="12dp" android:text="@string/return_home" />
     </LinearLayout>
 </ScrollView>

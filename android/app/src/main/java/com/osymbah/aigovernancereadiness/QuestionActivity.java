@@ -14,6 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionActivity extends AppCompatActivity {
+    public static final String EXTRA_SYSTEM_NAME = "system_name";
+    public static final String EXTRA_SYSTEM_PURPOSE = "system_purpose";
+    public static final String EXTRA_ORGANIZATION = "organization";
+    public static final String EXTRA_RESPONSES = "responses";
+    private static final String STATE_QUESTION_INDEX = "question_index";
+    private static final String STATE_RESPONSES = "responses";
+
     private List<GovernanceQuestion> questions;
     private ArrayList<Integer> selectedResponses;
     private int currentQuestionIndex = 0;
@@ -31,9 +38,16 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
 
         questions = QuestionBank.getQuestions();
-        selectedResponses = new ArrayList<>(questions.size());
-        for (int index = 0; index < questions.size(); index++) {
-            selectedResponses.add(-1);
+        if (savedInstanceState != null) {
+            currentQuestionIndex = savedInstanceState.getInt(STATE_QUESTION_INDEX, 0);
+            selectedResponses = savedInstanceState.getIntegerArrayList(STATE_RESPONSES);
+        }
+
+        if (selectedResponses == null || selectedResponses.size() != questions.size()) {
+            selectedResponses = new ArrayList<>(questions.size());
+            for (int index = 0; index < questions.size(); index++) {
+                selectedResponses.add(-1);
+            }
         }
 
         categoryText = findViewById(R.id.questionCategoryText);
@@ -66,13 +80,26 @@ public class QuestionActivity extends AppCompatActivity {
 
             saveCurrentResponse();
             if (currentQuestionIndex == questions.size() - 1) {
-                startActivity(new Intent(QuestionActivity.this, ResultsActivity.class));
+                Intent intent = new Intent(QuestionActivity.this, ResultsActivity.class);
+                intent.putExtra(EXTRA_SYSTEM_NAME, getIntent().getStringExtra(EXTRA_SYSTEM_NAME));
+                intent.putExtra(EXTRA_SYSTEM_PURPOSE, getIntent().getStringExtra(EXTRA_SYSTEM_PURPOSE));
+                intent.putExtra(EXTRA_ORGANIZATION, getIntent().getStringExtra(EXTRA_ORGANIZATION));
+                intent.putIntegerArrayListExtra(EXTRA_RESPONSES, selectedResponses);
+                startActivity(intent);
                 return;
             }
 
             currentQuestionIndex++;
             showCurrentQuestion();
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        saveCurrentResponse();
+        outState.putInt(STATE_QUESTION_INDEX, currentQuestionIndex);
+        outState.putIntegerArrayList(STATE_RESPONSES, selectedResponses);
+        super.onSaveInstanceState(outState);
     }
 
     private void showCurrentQuestion() {

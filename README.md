@@ -2,7 +2,7 @@
 
 ## Project Focus
 
-This project is a local-first educational prototype that applies my developing knowledge of AI governance. The goal is to organize structured assessment responses into an initial readiness summary and rule-based recommendations.
+This project is a local-first educational prototype that applies my developing knowledge of AI governance using the NIST Artificial Intelligence Risk Management Framework 1.0 as its selected framework. The goal is to organize structured assessment responses into an initial readiness summary and rule-based recommendations.
 
 ## Project Description
 
@@ -15,7 +15,7 @@ QuickCheck AI is an Android application prototype intended to help a user conduc
 - Accountability
 - Human oversight
 
-The current prototype includes the branded Welcome screen, navigation across five Android activities, assessment setup fields, and an initial 18-question bank. Category scoring, readiness levels, recommendations, and saved-assessment storage remain planned features.
+The current prototype includes the branded Welcome screen, navigation across five Android activities, assessment setup validation, an initial 18-question bank, transparent category scoring, readiness levels, rule-based recommendations, and local saved-assessment storage.
 
 The intended users may include students, developers, cybersecurity professionals, project owners, and governance personnel who need a structured starting point for discussing AI risk. The course version will be a single-user, local-first educational prototype. It will not provide a legal, regulatory, certification, or compliance determination.
 
@@ -37,15 +37,15 @@ The proposed application will present these considerations through a guided mobi
 
 ### Front End
 
-The interface currently uses Android activities, XML layouts, standard form controls, buttons, radio buttons, and a progress indicator. Navigation connects Welcome, Assessment Setup, Questions, placeholder Results, and placeholder Saved Assessments screens. The remaining screens still require full wireframe styling and accessibility review.
+The interface currently uses Android activities, XML layouts, standard form controls, buttons, radio buttons, and a progress indicator. Navigation connects Welcome, Assessment Setup, Questions, Results, and Saved Assessments. All five implemented screens use the approved QuickCheck AI palette and logo treatment. Android lint reports no layout accessibility errors, although assistive-technology and physical-device testing remain required.
 
 ### Local Back End
 
-The idea is for the prototype to store assessment records, responses, category scores, results, and recommendations on the device. SQLite or the Android Room persistence library will be evaluated before implementation.
+The prototype uses a local SQLite database through `SQLiteOpenHelper`. Each saved record includes the system information, response identifiers, category scores, overall score, readiness level, and creation time. Saved records remain on the device and can be listed and reopened.
 
 ### Business Logic
 
-Java classes are expected to validate required fields, convert responses into numeric values, calculate category and overall scores, assign readiness levels, and select rule-based recommendations.
+Java classes validate required fields, convert responses into numeric values, calculate category and overall scores, assign readiness levels, and select rule-based recommendations.
 
 ### Future Cloud Support
 
@@ -63,24 +63,45 @@ The application is intended to minimize permissions, avoid unnecessary personal 
 - An initial bank of 18 provisional questions, three per governance category
 - Yes, No, Partly, and Not Sure response options
 - Required response selection before advancing
-- Back and Next navigation with temporary answer retention during the current Question activity
+- Back and Next navigation with question-index and response retention during screen rotation
+- Transparent scoring across all six governance categories
+- Overall readiness levels and recommendations for categories below 75%
+- Local SQLite saving, listing, and reopening of completed assessments
 - A local unit test that checks the question-bank structure
+- Local unit tests for all-Yes, all-Partly, all-No, and mixed-response scoring examples
+- Scorer rejection of incomplete, mismatched, or unknown response data
+- Connected emulator tests for blank setup, unanswered questions, and system Back navigation
 
 ## Planned Functionality
 
-- Validate and map the question bank to a selected governance framework
-- Preserve assessment state across screen rotation and application recreation
-- Calculate transparent category scores and an overall readiness classification
-- Display rule-based recommendations for categories requiring attention
-- Save, view, search, reopen, and delete completed assessments locally
-- Complete the Results and Saved Assessments screens
+- Validate and map each question to the NIST AI RMF 1.0 Core functions and relevant categories or subcategories
+- Add deliberate update and deletion operations for saved assessments if required
+- Add search or filtering if required after the minimum course flow is stable
+- Test scoring boundaries with additional manually verified response combinations
 - Test the complete flow on an emulator and physical Android device
+
+## Course Minimum Viable Product Scope
+
+The course version is limited to a single-user, local-first educational Android prototype. Its minimum scope is frozen as follows:
+
+- Collect basic information about an AI system or project
+- Present 18 questions across six governance categories
+- Require one response to each question
+- Preserve assessment state during the intended user flow
+- Calculate transparent category and overall readiness results
+- Display rule-based recommendations tied to categories requiring attention
+- Save, list, and reopen assessments locally
+- Demonstrate the complete flow on an Android device
+
+Cloud synchronization, authentication, multi-user collaboration, AI-generated recommendations, advanced charts, report export, location services, networking, and enterprise audit infrastructure are outside the course  scope.
 
 ## Assessment and Scoring Approach
 
-The current response scale is **Yes**, **No**, **Partly**, and **Not Sure**. Planned scoring will be transparent and rule-based rather than using artificial intelligence to evaluate responses.
+The current response scale is **Yes**, **No**, **Partly**, and **Not Sure**. The implemented scoring assigns 3 points to Yes, 2 to Partly, 1 to Not Sure, and 0 to No. Each category contains three questions and is converted into a percentage. The overall percentage uses all 18 responses.
 
-A recognized AI-governance framework and the final question weights will be selected during the research and design phase. The question sources, scoring rules, and assumptions will be documented before implementation. The application will distinguish between an educational readiness indicator and a formal risk or compliance judgment.
+Scores of 75% to 100% receive **Higher Readiness**, 50% to 74% receive **Developing Readiness**, and scores below 50% receive **Needs Attention**. A recommendation is displayed for every category below 75%. These thresholds are preliminary course-project rules, not validated compliance or risk thresholds.
+
+The selected framework is the NIST Artificial Intelligence Risk Management Framework 1.0, NIST AI 100-1. NIST describes the framework as voluntary, rights-preserving, non-sector-specific, and use-case agnostic. QuickCheck AI uses it as the organizing foundation for the course prototype. The current questions have not yet been mapped individually to the Govern, Map, Measure, and Manage functions or their categories and subcategories. The application therefore distinguishes between an educational readiness indicator and a formal risk or compliance judgment.
 
 ## Design and Wireframes
 
@@ -103,6 +124,16 @@ The final Android layouts may change after testing, learning, and feedback. The 
 | --- | --- | --- |
 | ![Results screen](docs/wireframes/04-results.png) | ![Recommendations screen](docs/wireframes/05-recommendations.png) | ![Saved Assessments screen](docs/wireframes/06-saved-assessments.png) |
 
+### Current Android Prototype
+
+| Welcome | Assessment Setup | Governance Question |
+| --- | --- | --- |
+| ![Current Welcome screen](android/docs/screenshots/01-current-welcome.png) | ![Current Assessment Setup screen](android/docs/screenshots/02-current-setup.png) | ![Current Governance Question screen](android/docs/screenshots/03-current-question.png) |
+
+| Results | Saved Assessments |
+| --- | --- |
+| ![Current Results screen](android/docs/screenshots/04-current-results.png) | ![Current Saved Assessments screen](android/docs/screenshots/05-current-saved.png) |
+
 ## Project Goals and Success Criteria
 
 - A user can create and complete an assessment without encountering a blocking error.
@@ -117,10 +148,19 @@ The final Android layouts may change after testing, learning, and feedback. The 
 - Single-user operation
 - Local storage only
 - No formal legal, regulatory, certification, or compliance determination
-- The governance framework and scoring method have not been selected
+- NIST AI RMF 1.0 is selected, but the provisional questions have not yet been individually mapped or validated against its Core functions, categories, and subcategories
+- The scoring rules are transparent but preliminary and have not been validated as risk or compliance thresholds
 - The 18 questions are provisional and have not been validated as a formal assessment instrument
-- Results, recommendations, and saved-assessment storage are not yet implemented
-- Temporary answers are not yet preserved across rotation or application recreation
+- Saved assessments are read-only after completion; update, deletion, search, and export are not implemented
+- Process-death recovery, assistive-technology testing, and physical-device testing remain incomplete
+
+## Version Changelog
+
+| Version stage | Confirmed work | Status or next update |
+| --- | --- | --- |
+| Previous | Created the project outline, completed six digital wireframes, added five connected Activities, implemented the approved interface, and added the provisional 18-question bank. | Published through the earlier repository updates and pull request #2. |
+| Current | Added setup validation, transparent scoring, six category scores, three readiness levels, rule-based recommendations, SQLite saving, a saved-assessment list, record reopening, scoring input validation, and local and connected tests. The all-Yes example was completed, saved, listed, and reopened. Mixed scoring, blank setup, unanswered questions, and system Back paths were also tested on the Pixel 7 API 36 emulator. | Local work verified through 4 October 2026; not yet committed or published. |
+| Future | Map and validate the questions against NIST AI RMF 1.0, verify true process-death recovery, decide whether saved records require update or deletion, complete physical-device and assistive-technology testing, and prepare the Week 8 demonstration. | Planned and not yet complete. |
 
 ## Documentation
 
@@ -131,3 +171,7 @@ The final Android layouts may change after testing, learning, and feedback. The 
 ## Disclaimer
 
 This is a student-developed educational prototype. It is not intended to replace a formal legal, regulatory, compliance, or organizational risk assessment.
+
+## Framework Reference
+
+Tabassi, E. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)* (NIST AI 100-1). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.AI.100-1

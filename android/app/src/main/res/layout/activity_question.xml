@@ -1,90 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <TextView
-            android:id="@+id/questionCategoryText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/question_category_placeholder"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <ProgressBar
-            android:id="@+id/questionProgressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:max="18"
-            android:progress="1" />
-
-        <TextView
-            android:id="@+id/questionProgressText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/question_progress_placeholder"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/questionText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="@string/question_text_placeholder"
-            android:textSize="21sp" />
-
-        <RadioGroup
-            android:id="@+id/responseGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <RadioButton
-                android:id="@+id/responseYes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes" />
-
-            <RadioButton
-                android:id="@+id/responseNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No" />
-
-            <RadioButton
-                android:id="@+id/responsePartly"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Partly" />
-
-            <RadioButton
-                android:id="@+id/responseNotSure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not Sure" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+        <TextView style="@style/QuickCheckScreenHeading" android:text="@string/question_heading" />
+        <ImageView style="@style/QuickCheckSmallLogo" android:contentDescription="@null" android:importantForAccessibility="no" />
+        <TextView android:id="@+id/questionCategoryText" style="@style/QuickCheckBodyText" android:layout_marginTop="16dp" android:text="@string/question_category_placeholder" android:textColor="@color/quickcheck_bright_green" android:textStyle="bold" />
+        <ProgressBar android:id="@+id/questionProgressBar" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="12dp" android:layout_marginTop="12dp" android:max="18" android:progress="1" android:progressBackgroundTint="@color/white" android:progressTint="@color/quickcheck_bright_green" />
+        <TextView android:id="@+id/questionProgressText" style="@style/QuickCheckBodyText" android:layout_marginTop="8dp" android:text="@string/question_progress_placeholder" />
+        <TextView android:id="@+id/questionText" style="@style/QuickCheckBodyText" android:layout_marginTop="24dp" android:text="@string/question_text_placeholder" android:textSize="21sp" />
+        <RadioGroup android:id="@+id/responseGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:saveEnabled="false">
+            <RadioButton android:id="@+id/responseYes" android:layout_width="match_parent" android:layout_height="56dp" android:buttonTint="@color/quickcheck_bright_green" android:text="@string/response_yes" android:textColor="@color/white" android:textSize="18sp" />
+            <RadioButton android:id="@+id/responseNo" android:layout_width="match_parent" android:layout_height="56dp" android:buttonTint="@color/quickcheck_bright_green" android:text="@string/response_no" android:textColor="@color/white" android:textSize="18sp" />
+            <RadioButton android:id="@+id/responsePartly" android:layout_width="match_parent" android:layout_height="56dp" android:buttonTint="@color/quickcheck_bright_green" android:text="@string/response_partly" android:textColor="@color/white" android:textSize="18sp" />
+            <RadioButton android:id="@+id/responseNotSure" android:layout_width="match_parent" android:layout_height="56dp" android:buttonTint="@color/quickcheck_bright_green" android:text="@string/response_not_sure" android:textColor="@color/white" android:textSize="18sp" />
         </RadioGroup>
-
-        <Button
-            android:id="@+id/questionNextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="@string/next_question" />
-
-        <Button
-            android:id="@+id/questionBackButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Back" />
+        <Button android:id="@+id/questionNextButton" style="@style/QuickCheckButton" android:layout_marginTop="24dp" android:text="@string/next_question" />
+        <Button android:id="@+id/questionBackButton" style="@style/QuickCheckButton" android:layout_marginTop="12dp" android:text="@string/back" />
     </LinearLayout>
 </ScrollView>

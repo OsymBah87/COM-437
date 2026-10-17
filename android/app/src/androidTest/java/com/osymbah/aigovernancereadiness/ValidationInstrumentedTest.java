@@ -48,6 +48,36 @@ public class ValidationInstrumentedTest {
     }
 
     @Test
+    public void mixedResponsesShowExpectedScoresAndRecommendations() {
+        try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
+            onView(withId(R.id.startAssessmentButton)).perform(click());
+            onView(withId(R.id.systemNameInput)).perform(replaceText("Mixed Test System"));
+            onView(withId(R.id.systemPurposeInput)).perform(replaceText("Course validation"), closeSoftKeyboard());
+            onView(withId(R.id.setupNextButton)).perform(click());
+
+            int[] responses = {R.id.responseYes, R.id.responsePartly, R.id.responseNo};
+            for (int index = 0; index < 18; index++) {
+                onView(withId(responses[index % responses.length])).perform(click());
+                onView(withId(R.id.questionNextButton)).perform(click());
+            }
+
+            onView(withId(R.id.resultsSummaryText)).check(matches(withText(
+                    "Mixed Test System\n\nOverall score: 56%\nReadiness level: Developing Readiness")));
+            onView(withId(R.id.resultsCategoryText)).check(matches(withText(
+                    "Category scores\n\nSecurity: 56%\nPrivacy: 56%\nFairness: 56%\n" +
+                            "Transparency: 56%\nAccountability: 56%\nHuman Oversight: 56%")));
+            onView(withId(R.id.resultsRecommendationsText)).check(matches(withText(
+                    "Priority recommendations\n\n" +
+                            "Security: Review access controls, security risk assessment, and incident response arrangements.\n\n" +
+                            "Privacy: Identify sensitive data and document its purpose, retention, and secure deletion requirements.\n\n" +
+                            "Fairness: Identify affected groups and test and monitor outcomes for unfair differences.\n\n" +
+                            "Transparency: Document the system’s purpose and limitations and explain important outputs to affected users.\n\n" +
+                            "Accountability: Assign ownership and document approval, escalation, decision, and change records.\n\n" +
+                            "Human Oversight: Define trained human reviewers and procedures to challenge, pause, or stop the system.")));
+        }
+    }
+
+    @Test
     public void systemBackReturnsFromQuestionToSetup() {
         try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
             onView(withId(R.id.startAssessmentButton)).perform(click());

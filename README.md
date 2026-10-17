@@ -60,7 +60,7 @@ The application is intended to minimize permissions, avoid unnecessary personal 
 - Branded Welcome screen with the approved QuickCheck AI color palette, logo, purpose, and educational disclaimer
 - Five Java activities connected through explicit Android intents
 - Assessment Setup fields for basic system information
-- An initial bank of 18 provisional questions, three per governance category
+- An 18-question draft bank with student-created NIST AI RMF 1.0 Core outcome mappings, documented in `docs/NIST AI RMF QUESTION MAP.md`
 - Yes, No, Partly, and Not Sure response options
 - Required response selection before advancing
 - Back and Next navigation with question-index and response retention during screen rotation
@@ -74,7 +74,7 @@ The application is intended to minimize permissions, avoid unnecessary personal 
 
 ## Planned Functionality
 
-- Validate and map each question to the NIST AI RMF 1.0 Core functions and relevant categories or subcategories
+- Obtain independent content review of the mapped draft questions and revise them where needed
 - Add deliberate update and deletion operations for saved assessments if required
 - Add search or filtering if required after the minimum course flow is stable
 - Test scoring boundaries with additional manually verified response combinations
@@ -101,7 +101,7 @@ The current response scale is **Yes**, **No**, **Partly**, and **Not Sure**. The
 
 Scores of 75% to 100% receive **Higher Readiness**, 50% to 74% receive **Developing Readiness**, and scores below 50% receive **Needs Attention**. A recommendation is displayed for every category below 75%. These thresholds are preliminary course-project rules, not validated compliance or risk thresholds.
 
-The selected framework is the NIST Artificial Intelligence Risk Management Framework 1.0, NIST AI 100-1. NIST describes the framework as voluntary, rights-preserving, non-sector-specific, and use-case agnostic. QuickCheck AI uses it as the organizing foundation for the course prototype. The current questions have not yet been mapped individually to the Govern, Map, Measure, and Manage functions or their categories and subcategories. The application therefore distinguishes between an educational readiness indicator and a formal risk or compliance judgment.
+The selected framework is the NIST Artificial Intelligence Risk Management Framework 1.0, NIST AI 100-1. NIST describes the framework as voluntary, rights-preserving, non-sector-specific, and use-case agnostic. QuickCheck AI uses it as the organizing foundation for the course prototype. Each draft question has a student-created mapping to relevant Govern, Map, Measure, or Manage Core outcomes, documented in the question map. The mappings and question wording have not been independently validated or endorsed by NIST. The application therefore distinguishes between an educational readiness indicator and a formal risk or compliance judgment.
 
 ## Design and Wireframes
 
@@ -148,7 +148,7 @@ The final Android layouts may change after testing, learning, and feedback. The 
 - Single-user operation
 - Local storage only
 - No formal legal, regulatory, certification, or compliance determination
-- NIST AI RMF 1.0 is selected, but the provisional questions have not yet been individually mapped or validated against its Core functions, categories, and subcategories
+- NIST AI RMF 1.0 is selected, and each draft question has a documented student-created mapping to relevant Core outcomes; neither mappings nor wording have been independently validated
 - The scoring rules are transparent but preliminary and have not been validated as risk or compliance thresholds
 - The 18 questions are provisional and have not been validated as a formal assessment instrument
 - Saved assessments are read-only after completion; update, deletion, search, and export are not implemented
@@ -159,14 +159,15 @@ The final Android layouts may change after testing, learning, and feedback. The 
 | Version stage | Confirmed work | Status or next update |
 | --- | --- | --- |
 | Previous | Created the project outline, completed six digital wireframes, added five connected Activities, implemented the approved interface, and added the provisional 18-question bank. | Published through the earlier repository updates and pull request #2. |
-| Current | Added setup validation, transparent scoring, six category scores, three readiness levels, rule-based recommendations, SQLite saving, a saved-assessment list, record reopening, scoring input validation, and local and connected tests. The all-Yes example was completed, saved, listed, and reopened. Mixed scoring, blank setup, unanswered questions, and system Back paths were also tested on the Pixel 7 API 36 emulator. | Local work verified through 4 October 2026; not yet committed or published. |
-| Future | Map and validate the questions against NIST AI RMF 1.0, verify true process-death recovery, decide whether saved records require update or deletion, complete physical-device and assistive-technology testing, and prepare the Week 8 demonstration. | Planned and not yet complete. |
+| Current | Added setup validation, transparent scoring, six category scores, three readiness levels, rule-based recommendations, SQLite saving, a saved-assessment list, record reopening, scoring input validation, and local and connected tests. The all-Yes example was completed, saved, listed, and reopened. On 13 October 2026, a focused mixed-response UI test on the Pixel 7 API 36 emulator confirmed 56% overall and in each category, Developing Readiness, and recommendations for all six categories. On 16 October 2026, revised the 18 question drafts and documented student-created NIST AI RMF 1.0 Core mappings. | PR #3 was merged into `main` as `09d66094`. The 13 October test update and 16 October question/mapping changes are in PR #4, which is open for review and has not been merged. |
+| Future | Obtain independent review of the question wording and mappings, verify readiness-threshold boundary behavior, verify true process-death recovery, decide whether saved records require update or deletion, complete physical-device and assistive-technology testing, and prepare the Week 8 demonstration. | Planned and not yet complete. |
 
 ## Documentation
 
 - **Project Wiki:** https://github.com/OsymBah87/COM-437/wiki
 - **Repository:** https://github.com/OsymBah87/COM-437
 - **Android source:** `android/`
+- **Question-to-framework mapping:** `docs/NIST AI RMF QUESTION MAP.md`
 
 ## Disclaimer
 

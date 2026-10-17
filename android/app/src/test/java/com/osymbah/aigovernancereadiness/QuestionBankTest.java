@@ -3,11 +3,14 @@ package com.osymbah.aigovernancereadiness;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class QuestionBankTest {
     @Test
@@ -31,5 +34,26 @@ public class QuestionBankTest {
         assertEquals(Integer.valueOf(3), categoryCounts.get("Transparency"));
         assertEquals(Integer.valueOf(3), categoryCounts.get("Accountability"));
         assertEquals(Integer.valueOf(3), categoryCounts.get("Human Oversight"));
+    }
+
+    @Test
+    public void everyQuestionHasValidNistCoreMappingsAcrossAllFourFunctions() {
+        Set<String> mappedFunctions = new HashSet<>();
+
+        for (GovernanceQuestion question : QuestionBank.getQuestions()) {
+            String mapping = question.getNistCoreMapping();
+            assertFalse(mapping.trim().isEmpty());
+
+            for (String mappingCode : mapping.split(", ")) {
+                assertTrue(mappingCode.matches("(GOVERN|MAP|MEASURE|MANAGE) [1-9]\\.\\d+"));
+                mappedFunctions.add(mappingCode.substring(0, mappingCode.indexOf(' ')));
+            }
+        }
+
+        assertEquals(4, mappedFunctions.size());
+        assertTrue(mappedFunctions.contains("GOVERN"));
+        assertTrue(mappedFunctions.contains("MAP"));
+        assertTrue(mappedFunctions.contains("MEASURE"));
+        assertTrue(mappedFunctions.contains("MANAGE"));
     }
 }

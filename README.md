@@ -105,7 +105,7 @@ The selected framework is the NIST Artificial Intelligence Risk Management Frame
 
 ## Design and Wireframes
 
-The wireframes use a red background, green controls, white text, and a red-to-green heading treatment based on the QuickCheck AI logo. The interface uses readable labels, large touch targets, visible progress, predictable navigation, and concise explanations for governance terms.
+The wireframes use a red background, green heading treatment, white buttons, and consistent readable text, following the approved QuickCheck AI design. The interface uses readable labels, large touch targets, visible progress, predictable navigation, and concise explanations for governance terms.
 
 The final Android layouts may change after testing, learning, and feedback. The current wireframes and their editable Justinmind source are included in this repository.
 
@@ -159,12 +159,14 @@ The final Android layouts may change after testing, learning, and feedback. The 
 | Version stage | Confirmed work | Status or next update |
 | --- | --- | --- |
 | Previous | Created the project outline, completed six digital wireframes, added five connected Activities, implemented the approved interface, and added the provisional 18-question bank. | Published through the earlier repository updates and pull request #2. |
-| Current | Added setup validation, transparent scoring, six category scores, three readiness levels, rule-based recommendations, SQLite saving, a saved-assessment list, record reopening, scoring input validation, and local and connected tests. The all-Yes example was completed, saved, listed, and reopened. On 13 October 2026, a focused mixed-response UI test on the Pixel 7 API 36 emulator confirmed 56% overall and in each category, Developing Readiness, and recommendations for all six categories. On 16 October 2026, revised the 18 question drafts and documented student-created NIST AI RMF 1.0 Core mappings. | PR #3 was merged into `main` as `09d66094`. The 13 October test update and 16 October question/mapping changes are in PR #4, which is open for review and has not been merged. |
+| Current | Added setup validation, transparent scoring, six category scores, three readiness levels, rule-based recommendations, SQLite saving, a saved-assessment list, record reopening, scoring input validation, and local and connected tests. The all-Yes example was completed, saved, listed, and reopened. On 13 October 2026, a focused mixed-response UI test on the Pixel 7 API 36 emulator confirmed 56% overall and in each category, Developing Readiness, and recommendations for all six categories. On 16 October 2026, revised the 18 question drafts and documented student-created NIST AI RMF 1.0 Core mappings. | PR #3 was merged into `main` as `09d66094`. PR #4 was merged into `main` on October 17, 2026, as `463b3acc`. The current `main` branch includes the 13 October test update and the 16 October question and NIST AI RMF mapping changes. |
 | Future | Obtain independent review of the question wording and mappings, verify readiness-threshold boundary behavior, verify true process-death recovery, decide whether saved records require update or deletion, complete physical-device and assistive-technology testing, and prepare the Week 8 demonstration. | Planned and not yet complete. |
 
 ## Documentation
 
-- **Project Wiki:** https://github.com/OsymBah87/COM-437/wiki
+- **Final project outline:** [Project WIKI ‐ AI Governance Readiness Checklist](https://github.com/OsymBah87/COM-437/wiki/Project-WIKI-%E2%80%90-AI-Governance-Readiness-Checklist)
+- **GitHub README:** [View README.md](https://github.com/OsymBah87/COM-437/blob/main/README.md)
+- **Download a README copy:** [Download README.md](https://raw.githubusercontent.com/OsymBah87/COM-437/main/README.md)
 - **Repository:** https://github.com/OsymBah87/COM-437
 - **Android source:** `android/`
 - **Question-to-framework mapping:** `docs/NIST AI RMF QUESTION MAP.md`
